@@ -1,24 +1,29 @@
-# README
+# <Frontier>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<カー用品専門のECサイト>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<最近は、昔に比べて車のことに疎い人が増えて、カー用品店などに行く機会が少ないと思います。そういった人たちでもインターネットを通じて
+車に関わりを持って貰えれるような親しみやすいECサイトを作りたいという思いから、このテーマにしました。>
 
-* Ruby version
+### ターゲットユーザ
+<車のことに疎い人（初心者マークの人など）や車好きな人>
 
-* System dependencies
+### 主な利用シーン
+<車の用品を購入することができ、その商品のレビューやコメントができる>
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
