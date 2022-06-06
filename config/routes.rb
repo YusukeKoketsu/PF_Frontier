@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+namespace :admin do
+    get 'top' => 'homes#top'
+  end
+
+
 
   #会員側では、ログイン機能と新規会員登録機能の２つのみを使用する為
   devise_for :customers, controllers: {
