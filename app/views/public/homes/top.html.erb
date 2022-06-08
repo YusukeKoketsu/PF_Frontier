@@ -1,10 +1,8 @@
 <h1>記事一覧</h1>
 
-<%= link_to "新規投稿", new_admin_article_path %>
-
 <% @articles.each do |article| %>
 
-<%= link_to admin_article_path(article.id) do %>
+<%= link_to article_path(article.id) do %>
 <%= image_tag article.get_image("600x600") %>
 <% end %>
 
