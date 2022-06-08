@@ -1,0 +1,19 @@
+<h1>会員詳細画面</h1>
+
+<%= @customer.last_name %>
+
+<%= @customer.first_name %>
+
+<%= @customer.last_name_kana %>
+
+<%= @customer.first_name_kana %>
+
+<%= @customer.nickname %>
+
+<%= image_tag @customer.get_profile_image("100x100") %>
+
+<%= @customer.is_deleted ? "退会": "有効" %>
+
+<%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+
+<%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>

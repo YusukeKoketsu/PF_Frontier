@@ -1,3 +1,19 @@
 <h1>会員一覧画面</h1>
 
 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
+<% @customers.each do |customer| %>
+
+<%= link_to admin_customer_path(customer.id) do %>
+<%= image_tag customer.get_profile_image("100x100") %>
+<% end %>
+
+<%= customer.last_name %>
+
+<%= customer.first_name %>
+
+<%= customer.nickname %>
+
+
+
+<% end %>
