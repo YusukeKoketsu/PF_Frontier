@@ -8,6 +8,7 @@ namespace :admin do
     get 'top' => 'homes#top'
     resources :articles
     resources :customers, only: [:show, :edit, :update]
+
   end
 
 
