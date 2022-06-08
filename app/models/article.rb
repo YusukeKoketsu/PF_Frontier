@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   def get_image(size)
      unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-photo.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-photo.jpg', content_type: 'image/jpeg')
+      image.attach(io: File.open(file_path), filename: 'default-photo.jpg', content_type: 'image/jpg')
      end
      image.variant(resize:size).processed
   end
