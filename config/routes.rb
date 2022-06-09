@@ -24,6 +24,7 @@ scope module: :public do
     get 'homes/about' => 'homes#about', as: 'about'
     # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
+    resources :posts
 
     get 'mypage' => 'customers#mypage'
     #退会画面と退会処理の設定

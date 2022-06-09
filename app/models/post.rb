@@ -1,8 +1,11 @@
-class Article < ApplicationRecord
+class Post < ApplicationRecord
+
+  belongs_to :customer
+  belongs_to :category
 
   has_one_attached :image
 
-#　記事投稿画像をアップロード
+  #　会員の投稿画像をアップロード
   def get_image(size)
      unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-photo.jpg')

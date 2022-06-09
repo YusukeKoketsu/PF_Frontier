@@ -1,0 +1,15 @@
+<h1>投稿一覧</h1>
+
+<%= link_to  "新規投稿", new_post_path %>
+
+<% @posts.each do |post| %>
+
+<%= image_tag post.get_image("600x600") %>
+
+<%= post.title %>
+
+<%= post.introduction %>
+
+<%= post.category.name %>
+
+<% end %>
