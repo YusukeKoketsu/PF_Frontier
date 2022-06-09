@@ -25,7 +25,6 @@ scope module: :public do
     get 'article/:id' => 'articles#show', as: 'article'
     resources :posts
 
-
   end
 
 end

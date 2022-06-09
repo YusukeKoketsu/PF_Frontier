@@ -6,7 +6,7 @@
 
 <%= @post.introduction %>
 
-<%= @post.category_id %>
+<%= @post.category.name%>
 
 <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success px-3" %>
 

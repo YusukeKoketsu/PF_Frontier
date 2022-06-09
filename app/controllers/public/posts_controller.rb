@@ -1,11 +1,12 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
-     @post.customer_id = current_customer
+    @post.customer_id = current_customer.id
   end
 
   def create
     @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
     if @post.save
       redirect_to post_path(@post.id)
     else
@@ -27,7 +28,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update
+    if @post.update(post_params)
       redirect_to post_path
     else
       render 'edit'
@@ -37,7 +38,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to post_path
+    redirect_to posts_path
   end
 
   private
