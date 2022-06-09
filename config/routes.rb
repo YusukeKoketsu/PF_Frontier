@@ -21,9 +21,17 @@ namespace :admin do
 
 scope module: :public do
     root to: 'homes#top'
-    get 'about' => 'homes#about', as: 'about'
+    get 'homes/about' => 'homes#about', as: 'about'
+    # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
     resources :posts
+
+    get 'mypage' => 'customers#mypage'
+    #退会画面と退会処理の設定
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+
+    resources :customers, only: [:edit, :update]
 
   end
 
