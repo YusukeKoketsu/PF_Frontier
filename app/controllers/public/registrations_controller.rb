@@ -47,8 +47,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   mypage_path
   # end
 
-  protected
-
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -68,6 +66,17 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_sign_in_path_for(resource)
+    mypage_path(resource)
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
+  protected
+
   def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :last_name_kana, :first_name, :first_name_kana, :nickname])
   end

@@ -1,0 +1,69 @@
+<div class="container">
+
+<div class="row">
+  <div class="col-md-10">
+<h2>会員編集</h2>
+
+<%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+
+<div class="form-row mt-4">
+  <div class="col">
+    お名前
+    </div>
+    <div class="col">
+      <%= f.text_field :last_name, placeholder: "姓", class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :first_name, placeholder: "名", class: "form-control" %>
+    </div>
+</div>
+
+<div class="form-row mt-3">
+  <div class="col">
+    フリガナ
+    </div>
+    <div class="col">
+    <%= f.text_field :last_name_kana, placeholder: "セイ", class: "form-control" %>
+    </div>
+    <div class="col">
+    <%= f.text_field :first_name_kana, placeholder: "メイ", class: "form-control" %>
+    </div>
+ </div>
+
+ <div class="form-row mt-3">
+  <div class="col">
+    ニックネーム
+    </div>
+    <div class="col">
+    <%= f.text_field :nickname, placeholder: "ニックネーム", class: "form-control" %>
+    </div>
+    <div class="col"></div>
+ </div>
+
+  <div class="form-row mt-3">
+    <div class="col">
+    メールアドレス
+    </div>
+    <div class="col">
+    <%= f.email_field :email, placeholder: "sample@example.com", class: " form-control" %>
+    </div>
+    <div class="col"></div>
+  </div>
+
+<%= f.label :profile_image, "画像" %>
+<%= f.file_field :profile_image, accept: "image/*" %>
+
+  <div class="form-row mt-4">
+    <div class="col"></div>
+    <div class="col">
+    <%= f.submit "保存", class: "btn btn-success form-control" %>
+    </div>
+    <div class="col"></div>
+  </div>
+<% end %>
+
+<%= link_to "退会する", unsubscribe_path(@customer.id), class: "btn btn-danger" %>
+
+</div>
+</div>
+</div>
