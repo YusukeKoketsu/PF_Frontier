@@ -24,9 +24,8 @@ scope module: :public do
     get 'homes/about' => 'homes#about', as: 'about'
     # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
+    get 'mypage/:id' => 'customers#mypage', as: 'mypage'
     resources :posts
-
-    get 'mypage' => 'customers#mypage'
     #退会画面と退会処理の設定
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
