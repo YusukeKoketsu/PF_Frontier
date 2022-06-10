@@ -16,13 +16,17 @@
   　<header>
      <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
+        <% if admin_signed_in? %>
+          <a class="navbar-brand p-3" href="/admin/top"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
+        <% else %>
+          <a class="navbar-brand p-3" href="/"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
+        <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-        <a class="navbar-brand p-3" href="/"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
@@ -35,9 +39,6 @@
          </ul>
         </div>
         <% elsif  admin_signed_in? %>
-        <a class="navbar-brand p-3" href="/admin/top"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
@@ -50,9 +51,6 @@
          </ul>
         </div>
         <% else %>
-        <a class="navbar-brand p-3" href="/"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
            <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
           </li>
