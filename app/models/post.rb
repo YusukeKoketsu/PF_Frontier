@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   belongs_to :customer
   belongs_to :category
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :image
 
@@ -12,6 +13,11 @@ class Post < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-photo.jpg', content_type: 'image/jpg')
      end
      image.variant(resize:size).processed
+  end
+
+  #いいねしているかの確認
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
 end

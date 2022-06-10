@@ -25,7 +25,9 @@ scope module: :public do
     # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
     get 'mypage/:id' => 'customers#mypage', as: 'mypage'
-    resources :posts
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
     #退会画面と退会処理の設定
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'

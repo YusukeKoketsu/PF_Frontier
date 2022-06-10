@@ -4,7 +4,9 @@
 
 <% @posts.each do |post| %>
 
+<%= link_to post_path(post.id) do %>
 <%= image_tag post.get_image("600x600") %>
+<% end %>
 
 <%= post.title %>
 
