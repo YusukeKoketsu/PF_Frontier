@@ -16,6 +16,14 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def index
+    @customers = Customer.all
+  end
+
+  def show
+    @customer = Customer.find(params[:id])
+  end
+
   # 退会画面表示
   def unsubscribe
     @customer = Customer.find(params[:id])

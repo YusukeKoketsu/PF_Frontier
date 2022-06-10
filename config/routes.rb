@@ -30,7 +30,14 @@ scope module: :public do
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
-    resources :customers, only: [:edit, :update]
+    resources :customers, only: [:edit, :update, :index, :show] do
+
+      resource :relationships, only:[:create, :destroy]
+      get 'follows' => 'relationships#follower'
+      get 'followers' => 'relationships#followed'
+
+  end
+
 
   end
 
