@@ -5,6 +5,32 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+#フォロー機能 class_nameでRelationshipを指定
+# フォローしている
+has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+# フォローされてる
+has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+#フォローしている人
+has_many :follower_customer, through: :followed, source: :follower
+#今、自分にフォローしている人
+has_many :following_customer, through: :follower, source: :followed
+
+# フォローしたときの処理
+def follow(customer_id)
+  follower.create(followed_id: customer_id)
+end
+# フォローを外すときの処理
+def unfollow(customer_id)
+  follower.find_by(followed_id: customer_id).destroy
+end
+# includeメゾッドで既にフォローしているかの確認
+def following?(customer)
+  following_customer.include?(customer)
+end
+
+
+
 has_many :posts, dependent: :destroy
 
 
