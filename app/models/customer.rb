@@ -30,8 +30,10 @@ def following?(customer)
 end
 
 
-
+#投稿機能
 has_many :posts, dependent: :destroy
+#いいね機能
+has_many :favorites, dependent: :destroy
 
 
 has_one_attached :profile_image

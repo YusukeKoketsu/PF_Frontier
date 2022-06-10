@@ -8,6 +8,20 @@
 
 <%= @post.category.name%>
 
+<% if @post.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+<% end %>
+
 <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success px-3" %>
 
 <%= link_to "戻る", posts_path, class: "btn btn-secondary" %>
