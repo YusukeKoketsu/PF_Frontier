@@ -1,8 +1,13 @@
 class Post < ApplicationRecord
 
   belongs_to :customer
+  #カテゴリー機能
   belongs_to :category
+  #いいね機能
   has_many :favorites, dependent: :destroy
+  #コメント機能
+  has_many :post_comments, dependent: :destroy
+
 
   has_one_attached :image
 

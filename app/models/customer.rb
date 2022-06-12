@@ -34,6 +34,8 @@ end
 has_many :posts, dependent: :destroy
 #いいね機能
 has_many :favorites, dependent: :destroy
+# コメント機能
+has_many :post_comments, dependent: :destroy
 
 
 has_one_attached :profile_image

@@ -27,6 +27,7 @@ scope module: :public do
     get 'mypage/:id' => 'customers#mypage', as: 'mypage'
     resources :posts do
       resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
     #退会画面と退会処理の設定
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
