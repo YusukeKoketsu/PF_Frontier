@@ -8,7 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
+// viewで操作する為、window.を使用
+window.$ = window.jQuery = require('jquery');
+require('packs/raty');
+
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"

@@ -27,18 +27,55 @@
   <% @post.post_comments.each do |post_comment| %>
     <p><%= image_tag post_comment.customer.get_profile_image("100x100") %></p>
     <%= post_comment.customer.nickname %>
+    <div class="review-rating" data-score="<%= post_comment.rate %>">評価：</div>
+    <div id="star-rate<%= post_comment.id%>"></div>
+    <script>
+      $('#star-rate<%= post_comment.id%>').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf  : '<%= asset_path('star-half.png') %>',
+        half      : true,
+        // 入力できないようにする
+        readOnly: true,
+        score: <%= post_comment.rate %>
+      });
+    </script>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
     <%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete %>
   <% end %>
 </div>
 
+<div>
 <%= form_with model: [@post, @post_comment] do |f| %>
-  <%= f.text_area :comment, size: "90x5" %>
-  <%= f.submit "送信する" %>
+
+    <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
+
+  <div id="star">
+    <%= f.label :rate,'評価 ', class: 'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+    <%= f.submit "投稿する" %>
 <% end %>
+</div>
+
+
+
+  <script>
+      $('#star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf  : '<%= asset_path('star-half.png') %>',
+        scoreName : 'post_comment[rate]',
+        half      : true,
+      });
+    </script>
 
 <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success px-3" %>
 
 <%= link_to "戻る", posts_path, class: "btn btn-secondary" %>
 
 <%= link_to "削除する",post_path(@post.id), method: :delete, class: "btn btn-danger" %>
+
+
