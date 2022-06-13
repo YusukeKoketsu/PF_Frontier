@@ -5,7 +5,6 @@ class CreatePostComments < ActiveRecord::Migration[6.1]
       t.integer :customer_id, unll: false
       t.integer :post_id, unll: false
       t.text :comment, unll: false
-      t.float :rate, unll: false, default: 0
 
       t.timestamps
     end

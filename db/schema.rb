@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 2022_06_10_130224) do
     t.integer "customer_id"
     t.integer "post_id"
     t.text "comment"
-    t.float "rate", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -109,6 +108,7 @@ ActiveRecord::Schema.define(version: 2022_06_10_130224) do
     t.integer "category_id", null: false
     t.string "title", null: false
     t.text "introduction", null: false
+    t.float "rate", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
