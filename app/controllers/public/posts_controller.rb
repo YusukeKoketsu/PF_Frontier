@@ -1,11 +1,12 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
-    @post.customer_id = current_customer
+    @post.customer_id = current_customer.id
   end
 
   def create
     @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
     if @post.save
       redirect_to post_path(@post.id)
     else
