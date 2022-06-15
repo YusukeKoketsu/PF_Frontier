@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @post.customer_id = current_customer.id
+
   end
 
   def create
@@ -40,6 +41,11 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+  end
+
+  def hashtag
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @posts = @tag.posts
   end
 
   private
