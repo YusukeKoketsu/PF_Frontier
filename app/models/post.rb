@@ -28,6 +28,7 @@ class Post < ApplicationRecord
 
   before_update do
     post = Post.find_by(id: id)
+    # 重複のことも考え、一度ハッシュタグを消した上で、保存する
     post.hashtags.clear
     hashtags = introduction.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
