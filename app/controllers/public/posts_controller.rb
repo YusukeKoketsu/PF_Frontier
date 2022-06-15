@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @post.customer_id = current_customer.id
+
   end
 
   def create
@@ -42,10 +43,15 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def hashtag
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @posts = @tag.posts
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:image, :title, :introduction, :category_id, :rate)
+    params.require(:post).permit(:image, :title, :introduction, :category_id, :rate, :hashbody)
   end
 
 end
