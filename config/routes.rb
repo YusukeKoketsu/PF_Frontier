@@ -37,7 +37,8 @@ scope module: :public do
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
     resources :customers, only: [:edit, :update, :index, :show] do
-
+      # resources :post_comments, only: [:index]
+      get 'post_comments' => 'post_comments#index'
       resource :relationships, only:[:create, :destroy]
       get 'follows' => 'relationships#follower'
       get 'followers' => 'relationships#followed'

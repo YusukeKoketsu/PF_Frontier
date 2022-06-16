@@ -49,9 +49,9 @@
 </div>
 
 <div>
-<%= form_with model: [@post, @post_comment] do |f| %>
+<%= form_with model: [@post, @post_comment], method: :post do |f| %>
 
-    <%= f.text_area :comment, rows:'5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
+    <%= f.text_area :comment, rows: '5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
 
 
     <%= f.submit "投稿する" %>
