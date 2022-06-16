@@ -50,4 +50,17 @@ def get_profile_image(size)
 end
 
 
+#キーワード検索機能
+  def self.search_for(content, method)
+    # 検索バーの記述　"完全一致"=>"perfect","部分一致"=>"partial"
+    if method == 'perfect'
+      # 完全一致
+      Customer.where(nickname: content)
+    else
+      # 部分一致　'%'+content+'%'
+      Customer.where('nickname LIKE ?', '%'+content+'%')
+    end
+  end
+
+
 end

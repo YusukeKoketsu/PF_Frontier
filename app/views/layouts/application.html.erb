@@ -36,6 +36,9 @@
           <li class="nav-item">
            <%= link_to 'マイページ', mypage_path(current_customer.id), class: 'nav-link text-dark' %>
           </li>
+          <li class="nav-item">
+           <%= render 'public/searches/form' %>
+          </li>
          </ul>
         </div>
         <% elsif  admin_signed_in? %>

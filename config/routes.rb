@@ -25,6 +25,7 @@ scope module: :public do
     # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
     get 'mypage/:id' => 'customers#mypage', as: 'mypage'
+    get 'search' => 'searches#search'
     get 'post/hashtag/:name' => 'posts#hashtag'
     resources :posts do
       resource :favorites, only: [:create, :destroy]

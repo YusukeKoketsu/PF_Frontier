@@ -1,1 +1,17 @@
-<%= render 'public/customers/index', customers: @customers %>
+<h1>会員一覧画面</h1>
+
+<% @customers.each do |customer| %>
+
+<%= link_to customer_path(customer.id) do %>
+<%= image_tag customer.get_profile_image("100x100") %>
+<% end %>
+
+<%= customer.last_name %>
+
+<%= customer.first_name %>
+
+<%= customer.nickname %>
+
+<%= render "public/relationships/follow_btn", customer: customer %>
+
+<% end %>
