@@ -1,0 +1,15 @@
+<div class="album py-5 bg-light">
+        <div calass="container">
+          <div class="row">
+            <% @category.posts.each do |post| %>
+              <div class="col-md-2">
+                <%= image_tag post.get_image("100x100") %>
+                <div class="body">
+                  <p><%= link_to post.title, post_path(post.id) %></p>
+                  <p><%= render_with_hashtags(post.introduction) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>

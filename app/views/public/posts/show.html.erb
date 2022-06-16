@@ -4,9 +4,9 @@
 
 <%= @post.title %>
 
-<%= @post.introduction %>
+<%= render_with_hashtags(@post.introduction) %>
 
-<%= @post.category.name%>
+<%= @post.category.name %>
 
 <div class="review-rating" data-score="<%= @post.rate %>">評価：</div>
     <div id="star-rate<%= @post.id %>"></div>
@@ -36,8 +36,6 @@
       <% end %>
     </p>
 <% end %>
-
-<%= render_with_hashtags(@post.introduction) %>
 
 <div>
   <p>コメント件数：<%= @post.post_comments.count %></p>
