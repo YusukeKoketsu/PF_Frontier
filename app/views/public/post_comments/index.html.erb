@@ -1,0 +1,10 @@
+<h1>コメント一覧</h1>
+<% @post_comments.each do |post_comment| %>
+  <%= link_to post_path(post_comment.post.id) do %>
+  <%= image_tag post_comment.post.get_image("100x100") %>
+  <% end %>
+  <%= post_comment.post.title %>
+  <%= render_with_hashtags(post_comment.post.introduction) %>
+  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+  <%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete %>
+<% end %>
