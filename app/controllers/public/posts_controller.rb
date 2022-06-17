@@ -16,8 +16,16 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
     @categories = Category.all
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    elsif params[:rate]
+      @posts = Post.star_count
+    else
+     @posts = Post.all
+    end
   end
 
   def show

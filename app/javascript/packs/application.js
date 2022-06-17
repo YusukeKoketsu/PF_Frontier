@@ -10,7 +10,7 @@ import "channels"
 
 // viewで操作する為、window.を使用
 window.$ = window.jQuery = require('jquery');
-require('packs/raty');
+import "packs/raty";
 
 import "popper.js";
 import "bootstrap";

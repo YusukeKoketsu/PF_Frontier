@@ -3,6 +3,7 @@
   <%= link_to post_path(post_comment.post.id) do %>
   <%= image_tag post_comment.post.get_image("100x100") %>
   <% end %>
+  <%= post_comment.customer.nickname %>
   <%= post_comment.post.title %>
   <%= render_with_hashtags(post_comment.post.introduction) %>
   <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>

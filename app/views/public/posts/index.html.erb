@@ -4,6 +4,12 @@
 
 <%= link_to  "新規投稿", new_post_path %>
 
+<div>
+<%= link_to '新しい順', posts_path(latest: "true") %>
+|<%= link_to '古い順', posts_path(old: "true") %>
+|<%= link_to '評価の高い順', posts_path(rate: "true") %>
+</div>
+
 <% @posts.each do |post| %>
 
 <%= link_to post_path(post.id) do %>
@@ -21,6 +27,7 @@
 <div class="review-rating" data-score="<%= post.rate %>">評価：</div>
     <div id="star-rate<%= post.id%>"></div>
     <script>
+      $('#star-rate<%= post.id %>').empty();
       $('#star-rate<%= post.id%>').raty({
         size      : 36,
         starOff   : '<%= asset_path('star-off.png') %>',
