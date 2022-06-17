@@ -1,0 +1,29 @@
+<h1>ログイン会員の投稿一覧</h1>
+<% @posts.each do |post| %>
+
+<%= link_to post_path(post.id) do %>
+<%= image_tag post.get_image("600x600") %>
+<% end %>
+
+<%= post.title %>
+
+<%= render_with_hashtags(post.introduction) %>
+
+<%= post.category.name %>
+
+<div class="review-rating" data-score="<%= post.rate %>">評価：</div>
+    <div id="star-rate<%= post.id%>"></div>
+    <script>
+      $('#star-rate<%= post.id%>').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf  : '<%= asset_path('star-half.png') %>',
+        half      : true,
+        // 入力できないようにする
+        readOnly: true,
+        score: <%= post.rate %>
+      });
+    </script>
+
+<% end %>

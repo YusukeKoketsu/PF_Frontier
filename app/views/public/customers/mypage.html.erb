@@ -37,7 +37,7 @@
 
       <%= link_to "コメント一覧", customer_post_comments_path(@customer.id) %>
 
-      <%= link_to "投稿一覧一覧" %>
+      <%= link_to "投稿一覧一覧", customer_posts_path(@customer.id) %>
 
       <%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
   </div>

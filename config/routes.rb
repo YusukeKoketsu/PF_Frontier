@@ -33,12 +33,12 @@ scope module: :public do
     end
     resources :categories, only: [:show]
     #退会画面と退会処理の設定
-    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
 
     resources :customers, only: [:edit, :update, :index, :show] do
-      # resources :post_comments, only: [:index]
       get 'post_comments' => 'post_comments#index'
+      get 'posts' => 'posts#post_list'
       resource :relationships, only:[:create, :destroy]
       get 'follows' => 'relationships#follower'
       get 'followers' => 'relationships#followed'

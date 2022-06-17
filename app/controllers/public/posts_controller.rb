@@ -49,6 +49,11 @@ class Public::PostsController < ApplicationController
     @posts = @tag.posts
   end
 
+ # ログイン会員の投稿一覧
+  def post_list
+    @posts = current_customer.posts
+  end
+
   private
 
   def post_params
