@@ -43,6 +43,7 @@ scope module: :public do
     resources :customers, only: [:edit, :update, :index, :show] do
       get 'post_comments' => 'post_comments#index'
       get 'posts' => 'posts#post_list'
+      get 'favorites' => 'favorites#show'
       resource :relationships, only:[:create, :destroy]
       get 'follows' => 'relationships#follower'
       get 'followers' => 'relationships#followed'

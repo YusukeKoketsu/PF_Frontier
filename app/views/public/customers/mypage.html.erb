@@ -31,13 +31,15 @@
       </table>
 
       <h5>フォロー</h5>
-　　　<%= link_to @customer.follower.count, customer_follows_path(@customer.id) %>
-　　　<h5>フォロワー</h5>
-　　　<%= link_to @customer.followed.count, customer_followers_path(@customer.id) %>
+      <%= link_to @customer.follower.count, customer_follows_path(@customer.id) %>
+      <h5>フォロワー</h5>
+      <%= link_to @customer.followed.count, customer_followers_path(@customer.id) %>
+
+      <%= link_to "お気に入り", customer_favorites_path(@customer.id) %>
 
       <%= link_to "コメント一覧", customer_post_comments_path(@customer.id) %>
 
-      <%= link_to "投稿一覧一覧", customer_posts_path(@customer.id) %>
+      <%= link_to "投稿一覧", customer_posts_path(@customer.id) %>
 
       <%= link_to "編集", edit_customer_path(@customer.id), class: "btn btn-success" %>
   </div>

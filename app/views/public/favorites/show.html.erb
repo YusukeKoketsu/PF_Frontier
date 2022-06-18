@@ -1,0 +1,13 @@
+<% @favorites.each do |favorite| %>
+
+<%= link_to post_path(favorite.post.id) do %>
+<%= image_tag favorite.post.get_image("600x600") %>
+<% end %>
+
+<%= favorite.post.title %>
+
+<%= render_with_hashtags(favorite.post.introduction) %>
+
+<%= favorite.post.category.name %>
+
+<% end %>
