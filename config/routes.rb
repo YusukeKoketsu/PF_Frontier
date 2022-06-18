@@ -19,12 +19,16 @@ namespace :admin do
   passwords: 'public/passwords'
 }
 
+# deviseに新しいアクションを設定
+devise_scope :customer do
+   post 'customers/guest_sign_in' => 'public/sessions#guest_sign_in'
+ end
+
 scope module: :public do
     root to: 'homes#top'
     get 'homes/about' => 'homes#about', as: 'about'
-    # resources :articles, only: [:show]
     get 'article/:id' => 'articles#show', as: 'article'
-    get 'mypage/:id' => 'customers#mypage', as: 'mypage'
+    get 'mypage/:full_name' => 'customers#mypage', as: 'mypage'
     get 'search' => 'searches#search'
     get 'post/hashtag/:name' => 'posts#hashtag'
     resources :posts do
@@ -44,7 +48,6 @@ scope module: :public do
       get 'followers' => 'relationships#followed'
 
   end
-
 
   end
 

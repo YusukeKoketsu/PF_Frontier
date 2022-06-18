@@ -4,6 +4,26 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+# ゲストログイン機能
+def self.guest
+    find_or_create_by!(last_name: 'guest', first_name: 'Login', last_name_kana: 'guest', first_name_kana: 'Login', nickname: 'guest', email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+    end
+end
+
+def full_name
+    last_name + first_name
+end
+
+def full_name_kana
+    last_name_kana + first_name_kana
+end
+
+# マイページのURLを:idからfull_nameへ変更
+def to_param
+  full_name
+end
+
 
 #フォロー機能 class_nameでRelationshipを指定
 # フォローしている
