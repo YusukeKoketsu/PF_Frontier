@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
     elsif params[:rate]
       @posts = Post.star_count
     else
-     @posts = Post.all
+      @posts = Post.all
     end
   end
 

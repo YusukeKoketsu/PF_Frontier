@@ -26,14 +26,14 @@
         </tr>
         <tr>
           <td class="align-middle">アイコン</td>
-          <td><%= image_tag @customer.get_profile_image("100x100"), class: "rounded-circle" %></td>
+          <td><%= image_tag @customer.get_profile_image("100x100") %></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
         </tr>
         <tr>
-          <td><%= link_to "フォロー", customer_follows_path(@customer) %></td>
+          <td><%= link_to "フォロー中", customer_follows_path(@customer) %></td>
           <td><%= @customer.follower.count %></td>
         </tr>
         <tr>

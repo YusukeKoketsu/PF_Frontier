@@ -19,7 +19,6 @@ class Post < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(rate: :desc)}
 
-
   # ハッシュタグ機能
   after_create do
     post = Post.find_by(id: id)

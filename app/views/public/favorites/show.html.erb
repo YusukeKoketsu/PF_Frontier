@@ -1,19 +1,11 @@
-<div class="container">
-  <div class="row">
-   <% @favorites.each do |favorite| %>
-     <div class="col">
-       <%= link_to post_path(favorite.post.id) do %>
-       <%= image_tag favorite.post.get_image("400x400") %>
-       <% end %>
-     </div>
+<div class="container text-center">
+ <div class="row mb-3">
+ <% @favorites.each do |favorite| %>
+  <div class="col-sm-6 col-md-6 col-lg-4 mt-5">
+    <%= link_to post_path(favorite.post.id) do %>
+    <%= image_tag favorite.post.get_image("300x300!") %>
+    <% end %>
   </div>
-  <div class="row">
-    <div class="col">
-     <%= favorite.post.title %>
-     <%= render_with_hashtags(favorite.post.introduction) %>
-     <%= favorite.post.category.name %>
-    </div>
-
-<% end %>
-</div>
+ <% end %>
+ </div>
 </div>

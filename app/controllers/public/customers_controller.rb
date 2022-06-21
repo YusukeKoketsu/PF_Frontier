@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_sign_in, only: [:mypage, :edit, :update, :unsubscribe, :withdrawal]
 
   def mypage
     @customer = current_customer
