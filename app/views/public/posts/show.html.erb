@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <h2>投稿詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-lg-5">
+    <%= image_tag @post.get_image("400x400!") %>
+    </div>
+    <div class="col-md-6 col-lg-5 text-break">
+      <dl>
+       <h5>
+        <dt>タイトル</dt>
+        <dd class="mt-2 ml-2"><%= @post.title %></dd>
+        <dt>紹介文</dt>
+        <dd class="mt-2 ml-2"><%= render_with_hashtags(@post.introduction) %></dd>
+        <dt>カテゴリ</dt>
+        <dd class="mt-2 ml-2"><%= @post.category.name %></dd>
+        <dt>評価</dt>
+        <dd class="mt-2 ml-2" id="star-rate<%= @post.id %>"><%= render 'public/posts/rate', post: @post %></dd>
+        <dt>いいね数 : <%= @post.favorites.count %></dt>
+        <dt class="mt-3 mb-3">投稿日</dt>
+        <dd class="text-muted mt-2 ml-2"><%= @post.created_at.strftime("%Y年%m月%d日") %></dd>
+      </h5>
+      <dt>
+      <% if @post.favorited_by?(current_customer) %>
+          <%= link_to post_favorites_path(@post), method: :delete, class: "pt-3 mr-2" do %>
+            <i class="fas fa-thumbs-up fa-2x" aria-hidden="true"></i>
+           <% end %>
+      <% else %>
+          <%= link_to post_favorites_path(@post), method: :post, class: "mr-2" do %>
+            <i class="fas fa-thumbs-up fa-2x" aria-hidden="true" style="color: gray;"></i>
+           <% end %>
+      <% end %>
+      <% if @post.customer == current_customer %>
+         <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success ml-2" %>
+         <%= link_to "削除する",post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-2" %>
+      <% end %>
+         <%= link_to "戻る", posts_path, class: "btn btn-secondary ml-2" %>
+      </dt>
+    </dl>
+    </div>
+  </div>
+  <div>
+       <%= render 'public/post_comments/form', customer: @post.customer, post: @post, post_comment: @post_comment %>
+  </div>
+</div>

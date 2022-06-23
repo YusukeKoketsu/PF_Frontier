@@ -2,15 +2,90 @@
 <html>
   <head>
     <title>Frontier</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="footerFixed">
+     <header>
+      <div class="container">
+     <nav class="navbar navbar-expand-lg navbar-light mb-4">
+        <% if admin_signed_in? %>
+          <a class="navbar-brand p-3" href="/admin/top"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
+        <% else %>
+          <a class="navbar-brand p-3" href="/"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
+        <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-item">
+           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '新規投稿', new_post_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to 'マイページ', mypage_path(current_customer), class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '会員一覧', customers_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= render 'public/searches/form' %>
+          </li>
+         </ul>
+        <% elsif  admin_signed_in? %>
+          <li class="nav-item">
+           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '会員一覧', admin_top_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '新規投稿', new_admin_article_path, class: 'nav-link text-dark' %>
+          </li>
+         </ul>
+        <% else %>
+          <li class="nav-item">
+           <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
+          </li>
+         </ul>
+        <% end %>
+      </div>
+     </nav>
+     </div>
+   </header>
+   <main>
+     <div class="text-success">
+      <h4><%= flash[:notice] %></h4>
+    </div>
     <%= yield %>
+   </main>
+   <footer>
+    <div class="container mx-auto">
+    <div class="row p-3 ">
+      <div class="mx-auto">
+       <p class = "m-0">𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</p>
+      </div>
+    </div>
+   </div>
+   </footer>
+   </div>
   </body>
 </html>

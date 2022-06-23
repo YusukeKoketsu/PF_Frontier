@@ -1,0 +1,13 @@
+<h1>記事一覧</h1>
+
+<% @articles.each do |article| %>
+
+<%= link_to article_path(article.id) do %>
+<%= image_tag article.get_image("600x600") %>
+<% end %>
+
+<%= article.title %>
+
+<%= article.introduction %>
+
+<% end %>

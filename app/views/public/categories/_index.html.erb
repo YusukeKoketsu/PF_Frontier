@@ -1,0 +1,9 @@
+<% categories.each do |category| %>
+
+  <%= link_to category_path(category.id), class: "btn btn-sm btn-light m-2" do %>
+
+  <%= category.name %>
+
+  <% end %>
+
+<% end %>

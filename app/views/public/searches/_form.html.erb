@@ -1,0 +1,46 @@
+<!--<div class="serch_form">-->
+<!--    serch_pathルーティングに検索内容を渡している-->
+<!--    <%#= form_with url: search_path,method: :get, local: true do |f| %>-->
+<!--    ユーザーの入力した検索ワードはcontentとしてコントローラーのアクションに送られる-->
+<!--    検索ワードはcontentで、検索対象はmodelで、検索方法はmethodでコントローラーに渡される-->
+<!--    <%#= f.text_field :content %>-->
+<!--    f.selectの記述でプルダウン（セレクトボックス）を作成-->
+<!--    会員か投稿かを選択-->
+<!--    <%#= f.select :model,options_for_select({"会員検索"=>"customer","投稿"=>"post"})%>-->
+<!--    ({"完全一致"=>"perfect"...この部分の記述は、"選択肢で表示する文字"=>DBに渡す値（保存させる内容）-->
+    <%#= f.select :method,options_for_select({"完全一致"=>"perfect","部分一致"=>"partial"})%>
+<!--    <%#= f.submit'検索' %>-->
+<!--    <%# end %>-->
+<!--</div>-->
+
+
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+  <i class="fa fa-search"></i>
+</button>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">検索</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <div class="modal-body">
+         <%= f.label :content, "キーワード検索" %>
+         <%= f.text_field :content, size: "50", placeholder: "キーワードを入力してください。" %>
+         <%= f.select :model,options_for_select({"会員"=>"customer","投稿"=>"post"})%>
+         <%= f.label :method, "検索条件"%>
+         <%= f.select :method,options_for_select({"完全一致"=>"perfect","部分一致"=>"partial"})%>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <%= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class =>"btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

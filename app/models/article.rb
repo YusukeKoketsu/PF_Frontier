@@ -2,6 +2,7 @@ class Article < ApplicationRecord
 
   has_one_attached :image
 
+#　記事投稿画像をアップロード
   def get_image(size)
      unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-photo.jpg')

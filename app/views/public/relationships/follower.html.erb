@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>フォロー中<%= @customers.count %>人</h2>
+    </div>
+  </div>
+  <div class="row">
+<% if @customers.exists? %>
+  <%= render 'public/customers/index', customers: @customers %>
+<% else %>
+  <div class="col text-center text-break">
+  <h1>フォロー中のユーザーはいません</h1>
+  </div>
+<% end %>
+  </div>
+</div>

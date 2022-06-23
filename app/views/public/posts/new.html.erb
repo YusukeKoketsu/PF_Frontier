@@ -1,0 +1,36 @@
+<h1>新規投稿</h1>
+
+<%= form_with model: @post, url: posts_path, method: :post do |f| %>
+
+<%= f.label :image, "画像" %>
+<%= f.file_field :image, accept: "image/*" %>
+
+<%= f.label :title, "タイトル" %>
+<%= f.text_field :title %>
+
+<%= f.label :introduction, "紹介文" %>
+<%= f.text_area :introduction %>
+
+<!--カテゴリーの名前全てを表示させる-->
+<%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), prompt: "--選択してください--" %>
+
+<div id="star">
+    <%= f.label :rate,'評価 ', class: 'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+<%= f.submit "投稿" %>
+
+<% end %>
+
+<script>
+      $('#star').empty();
+      $('#star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf  : '<%= asset_path('star-half.png') %>',
+        scoreName : 'post[rate]',
+        half      : true,
+      });
+    </script>

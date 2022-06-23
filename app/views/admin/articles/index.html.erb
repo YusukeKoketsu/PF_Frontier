@@ -5,7 +5,7 @@
 <% @articles.each do |article| %>
 
 <%= link_to admin_article_path(article.id) do %>
-<%= image_tag article.get_image("100x100") %>
+<%= image_tag article.get_image("600x600") %>
 <% end %>
 
 <%= article.title %>

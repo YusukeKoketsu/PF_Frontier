@@ -1,0 +1,20 @@
+<div class="row mb-3">
+ <% customers.each do |customer| %>
+  <div class="col-lg-4 col-md-6 col-sm-7 form-inline justify-content-center">
+    <div class="card mt-5 mb-3 shadow-lg">
+      <%= link_to customer_path(customer.id), class: "bd-placeholder-img card-img-top" do %>
+      <%= image_tag customer.get_profile_image("350x350!") %>
+      <% end %>
+        <dl>
+          <dt class="customer-nickname">ニックネーム</dt>
+          <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= customer.nickname %></dd>
+          <dt class="customer-followers">フォロー数</dt>
+          <dd class="ml-2"><%= customer.follower.count %></dd>
+          <dt class="customer-followeds">フォロワー数</dt>
+          <dd class="ml-2"><%= customer.followed.count %></dd>
+          <dt class="follow-btn ml-1"><%= render "public/relationships/follow_btn", customer: customer %></dt>
+        </dl>
+   </div>
+  </div>
+ <% end %>
+</div>

@@ -1,0 +1,50 @@
+<div class="conteiner">
+  <div class="row">
+    <div class="col text-center">
+      <h1>マイページ</h1>
+       <%= link_to "お気に入り", favorites_path(@customer) %>
+       /
+       <%= link_to "投稿一覧", post_list_path(@customer) %>
+       /
+       <%= link_to "コメント一覧", post_comments_path(@customer) %>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-7 px-5 mx-auto">
+       <table class="table table-hover table-bordered mt-3 text-center border-5">
+        <tr>
+          <td>氏名</td>
+          <td><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+          <td>カナ</td>
+          <td><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <td>ニックネーム</td>
+          <td><%= @customer.nickname %></td>
+        </tr>
+        <tr>
+          <td class="align-middle">アイコン</td>
+          <td><%= image_tag @customer.get_profile_image("100x100") %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "フォロー中", customer_follows_path(@customer) %></td>
+          <td><%= @customer.follower.count %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "フォロワー", customer_followers_path(@customer) %></td>
+          <td><%= @customer.followed.count %></td>
+        </tr>
+      </table>
+
+        <div class="text-center mt-2 mb-3">
+         <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success btn-block btn-lg" %>
+        </div>
+      </div>
+    </div>
+ </div>
