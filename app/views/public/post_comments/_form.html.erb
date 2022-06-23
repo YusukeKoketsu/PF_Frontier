@@ -1,0 +1,26 @@
+<div class="row">
+<div class="col-12">
+<% if customer == post.customer %>
+  <%= form_with model: [post, post_comment], local: false do  |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
+    <%= f.submit "送信する", class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>
+</div>
+<div class="row">
+    <% post.post_comments.each do |post_comment| %>
+      <div class="card m-3" style="width: 30rem;">
+        <div class="card-body">
+           <dl>
+             <dt class="customer-nickname">ニックネーム</dt>
+             <dd class="m-2"><%= post_comment.customer.nickname %></dd>
+             <dt class="post_comment"><h5>コメント</h5></dt>
+             <dd class="m-2"><%= post_comment.comment %></dd>
+             <dd class="card-subtitle mb-2 text-muted mt-4"><%= post_comment.created_at.strftime('%Y/%m/%d') %></dd>
+             <dd class="text-right"><%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-danger" %></dd>
+           </dl>
+          </div>
+        </div>
+    <% end %>
+<% end %>
+</div>

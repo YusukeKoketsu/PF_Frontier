@@ -9,8 +9,8 @@
         <%= image_tag @customer.get_profile_image("400x400!"), class: "rounded" %>
       </div>
       <div class="col-lg-7 col-md-8">
-          <h5>
           <dl>
+            <h5>
              <dt class="mt-2">ニックネーム</dt>
              <dd class="mt-2 ml-2"><%= @customer.nickname %></dd>
              <dt>フォロー</dt>
@@ -21,8 +21,8 @@
              <dd class="mt-2 ml-2"><%= @customer.posts.count %></dd>
              <dt>いいね数</dt>
              <dd class="mt-2 ml-2"><%= @customer.favorites.count %></dd>
+            </h5>
           </dl>
-          </h5>
       </div>
   </div>
 </div>

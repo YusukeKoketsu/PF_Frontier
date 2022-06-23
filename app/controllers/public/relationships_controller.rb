@@ -12,13 +12,13 @@ class Public::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  #フォロワー会員一覧
+  #ログイン会員フォロワー一覧
   def follower
     customer = current_customer
     @customers = customer.following_customer
   end
 
-  #フォロー会員一覧
+  #ログイン会員フォロー中一覧
   def followed
     customer = current_customer
     @customers = customer.follower_customer
