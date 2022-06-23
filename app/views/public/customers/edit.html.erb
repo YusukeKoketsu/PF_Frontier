@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-10">
 <h2>会員編集</h2>
 
 <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
@@ -49,20 +49,23 @@
     </div>
     <div class="col"></div>
   </div>
-
-<%= f.label :profile_image, "画像" %>
-<%= f.file_field :profile_image, accept: "image/*" %>
-
+  <div class="form-row mt-3">
+    <div class="col">
+      アイコン画像
+    </div>
+    <div class="col">
+     <%= f.file_field :profile_image, accept: "image/*" %>
+    </div>
+    <div class="col"></div>
+  </div>
   <div class="form-row mt-4">
     <div class="col"></div>
     <div class="col">
     <%= f.submit "保存", class: "btn btn-success form-control" %>
     </div>
-    <div class="col"></div>
+    <div class="col"><%= link_to "退会する", unsubscribe_path(@customer.id), class: "btn btn-danger form-control" %></div>
   </div>
 <% end %>
-
-<%= link_to "退会する", unsubscribe_path(@customer.id), class: "btn btn-danger" %>
 
 </div>
 </div>

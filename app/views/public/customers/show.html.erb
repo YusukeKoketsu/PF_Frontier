@@ -1,17 +1,28 @@
-<h1>会員詳細画面</h1>
-
-<%= @customer.last_name %>
-
-<%= @customer.first_name %>
-
-<%= @customer.last_name_kana %>
-
-<%= @customer.first_name_kana %>
-
-<%= @customer.nickname %>
-
-<%= image_tag @customer.get_profile_image("100x100") %>
-<h5>フォロー</h5>
-<%= link_to @customer.follower.count, customer_follows_path(@customer.id) %>
-<h5>フォロワー</h5>
-<%= link_to @customer.followed.count, customer_followers_path(@customer.id) %>
+<div class="container">
+  <div class="row">
+      <div class="col mb-5">
+        <h2><%= @customer.nickname %>さんの詳細ページ</h2>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-5 col-md-4">
+        <%= image_tag @customer.get_profile_image("400x400!"), class: "rounded" %>
+      </div>
+      <div class="col-lg-7 col-md-8">
+          <dl>
+            <h5>
+             <dt class="mt-2">ニックネーム</dt>
+             <dd class="mt-2 ml-2"><%= @customer.nickname %></dd>
+             <dt>フォロー</dt>
+             <dd class="mt-2 ml-2"><%= @customer.follower.count %></dd>
+             <dt>フォロワー</dt>
+             <dd class="mt-2 ml-2"><%= @customer.followed.count %></dd>
+             <dt>投稿数</dt>
+             <dd class="mt-2 ml-2"><%= @customer.posts.count %></dd>
+             <dt>いいね数</dt>
+             <dd class="mt-2 ml-2"><%= @customer.favorites.count %></dd>
+            </h5>
+          </dl>
+      </div>
+  </div>
+</div>

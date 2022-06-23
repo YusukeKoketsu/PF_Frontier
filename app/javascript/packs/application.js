@@ -7,15 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"
+import '@fortawesome/fontawesome-free/js/all'
 
 // viewで操作する為、window.を使用
 window.$ = window.jQuery = require('jquery');
 import "packs/raty";
 
-import "popper.js";
-import "bootstrap";
-import "../stylesheets/application"
-import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
 Turbolinks.start()

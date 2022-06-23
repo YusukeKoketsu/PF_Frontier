@@ -1,6 +1,15 @@
-<h2>Follower customers</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>フォロワー<%= @customers.count %>人</h2>
+    </div>
+  </div>
 <% if @customers.exists? %>
   <%= render 'public/customers/index', customers: @customers %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <div class="col text-center text-break">
+  <h1>フォロワーはいません</h1>
+  </div>
 <% end %>
+
+</div>

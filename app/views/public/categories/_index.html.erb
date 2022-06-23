@@ -1,22 +1,9 @@
-<div class= "container">
-  <div class = "row">
-    <table class="table table-hover teble-inverse mt-3">
-      <thead class = "table-secondary">
-        <tr>
-          <th>カテゴリー</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% categories.each do |category| %>
-          <tr>
-            <th>
-              <%= link_to category_path(category.id), class: "btn btn-sm btn-light" do %>
-              <%= category.name %>
-              <% end %>
-            </th>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<% categories.each do |category| %>
+
+  <%= link_to category_path(category.id), class: "btn btn-sm btn-light m-2" do %>
+
+  <%= category.name %>
+
+  <% end %>
+
+<% end %>

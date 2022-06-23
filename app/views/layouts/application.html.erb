@@ -2,20 +2,18 @@
 <html>
   <head>
     <title>Frontier</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  　<header>
-     <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="footerFixed">
+     <header>
       <div class="container">
+     <nav class="navbar navbar-expand-lg navbar-light mb-4">
         <% if admin_signed_in? %>
           <a class="navbar-brand p-3" href="/admin/top"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
         <% else %>
@@ -37,10 +35,15 @@
            <%= link_to 'マイページ', mypage_path(current_customer), class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
+           <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
+           <%= link_to '会員一覧', customers_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item">
            <%= render 'public/searches/form' %>
           </li>
          </ul>
-        </div>
         <% elsif  admin_signed_in? %>
           <li class="nav-item">
            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -52,7 +55,6 @@
            <%= link_to '新規投稿', new_admin_article_path, class: 'nav-link text-dark' %>
           </li>
          </ul>
-        </div>
         <% else %>
           <li class="nav-item">
            <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
@@ -64,14 +66,26 @@
            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
           </li>
          </ul>
-        </div>
         <% end %>
       </div>
-  　</header>
      </nav>
+     </div>
    </header>
    <main>
+     <div class="text-success">
+      <h4><%= flash[:notice] %></h4>
+    </div>
     <%= yield %>
    </main>
+   <footer>
+    <div class="container mx-auto">
+    <div class="row p-3 ">
+      <div class="mx-auto">
+       <p class = "m-0">𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</p>
+      </div>
+    </div>
+   </div>
+   </footer>
+   </div>
   </body>
 </html>

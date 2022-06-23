@@ -1,34 +1,22 @@
-<h1>投稿一覧</h1>
-
-<%= link_to  "新規投稿", new_post_path %>
-
-<% posts.each do |post| %>
-
-<%= link_to post_path(post.id) do %>
-<%= image_tag post.get_image("600x600") %>
-<% end %>
-
-<%= post.title %>
-
-<%= post.introduction %>
-
-<%= post.category.name %>
-
-<%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
-
-<div class="review-rating" data-score="<%= post.rate %>">評価：</div>
-    <div id="star-rate<%= post.id%>"></div>
-    <script>
-      $('#star-rate<%= post.id%>').raty({
-        size      : 36,
-        starOff   : '<%= asset_path('star-off.png') %>',
-        starOn    : '<%= asset_path('star-on.png') %>',
-        starHalf  : '<%= asset_path('star-half.png') %>',
-        half      : true,
-        // 入力できないようにする
-        readOnly: true,
-        score: <%= post.rate %>
-      });
-    </script>
-
-<% end %>
+<div class="row mb-3">
+    <% posts.each do |post| %>
+      <div class="col-lg-4 col-md-6 col-sm-7 mb-2 form-inline justify-content-center">
+      <div class="card mt-5 shadow-lg">
+        <%= link_to post_path(post.id), class: "bd-placeholder-img card-img-top" do %>
+        <%= image_tag post.get_image("350x350!") %>
+        <% end %>
+        <dl>
+          <dt class="post-title">タイトル</dt>
+          <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= post.title %></dd>
+          <dt class="post-text">紹介文</dt>
+          <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= render_with_hashtags(post.introduction) %></dd>
+          <dt class="post-category">カテゴリー</dt>
+          <dd class="ml-2"><%= post.category.name %></dd>
+          <dt class="post-rate">評価</dt>
+          <dd class="ml-2" id="star-rate<%= post.id%>"><%= render 'public/posts/rate', post: post %></dd>
+          <dd>コメント数 : <%= post.post_comments.count %><span class="ml-3">いいね数 : <%= post.favorites.count %></span></dd>
+        </dl>
+      </div>
+    </div>
+   <% end %>
+</div>

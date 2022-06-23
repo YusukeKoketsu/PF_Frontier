@@ -28,7 +28,6 @@ scope module: :public do
     root to: 'homes#top'
     get 'homes/about' => 'homes#about', as: 'about'
     get 'article/:id' => 'articles#show', as: 'article'
-    get 'mypage/:full_name' => 'customers#mypage', as: 'mypage'
     get 'search' => 'searches#search'
     get 'post/hashtag/:name' => 'posts#hashtag'
     resources :posts do
@@ -39,6 +38,7 @@ scope module: :public do
     #退会画面と退会処理の設定
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    get 'mypage/:full_name' => 'customers#mypage', as: 'mypage'
     get '/:full_name/post_comments' => 'post_comments#index', as: 'post_comments'
     get '/:full_name/favorites' => 'favorites#show', as: 'favorites'
     get '/:full_name/post_list' => 'posts#post_list', as: 'post_list'

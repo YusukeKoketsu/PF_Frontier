@@ -1,11 +1,27 @@
-<h1>コメント一覧</h1>
-<% @post_comments.each do |post_comment| %>
-  <%= link_to post_path(post_comment.post.id) do %>
-  <%= image_tag post_comment.post.get_image("100x100") %>
-  <% end %>
-  <%= post_comment.customer.nickname %>
-  <%= post_comment.post.title %>
-  <%= render_with_hashtags(post_comment.post.introduction) %>
-  <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-  <%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>コメント一覧</h1>
+    </div>
+  </div>
+   <div class="row">
+      <% @post_comments.each do |post_comment| %>
+      <div class="col">
+        <div class="card m-3" style="width: 30rem;">
+          <div class="card-body">
+           <dl>
+             <dt class="card-title"><%= link_to post_path(post_comment.post.id) do %><h5>タイトル</h5></dt>
+             <dd class="m-2"><%= post_comment.post.title %></dd>
+             <dt class="card-text"><h5>コメント</h5></dt>
+             <dd class="m-2"><%= post_comment.comment %></dd>
+                 <% end %>
+             <dd class="card-subtitle mb-2 text-muted mt-4"><%= post_comment.created_at.strftime('%Y/%m/%d') %></dd>
+             <dd class="text-right"><%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-danger" %></dd>
+           </dl>
+          </div>
+        </div>
+      </div>
+       <% end %>
+    </div>
+</div>
+

@@ -1,15 +1,17 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_sign_in, only: [:mypage, :edit, :update, :unsubscribe, :withdrawal]
 
   def mypage
     @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
       redirect_to mypage_path(current_customer)
     else

@@ -1,72 +1,48 @@
-<h1>投稿詳細</h1>
-
-<%= image_tag @post.get_image("600x600") %>
-
-<%= @post.title %>
-
-<%= render_with_hashtags(@post.introduction) %>
-
-<%= @post.category.name %>
-
-<div class="review-rating" data-score="<%= @post.rate %>">評価：</div>
-    <div id="star-rate<%= @post.id %>"></div>
-    <script>
-      $('#star-rate<%= @post.id %>').empty();
-      $('#star-rate<%= @post.id %>').raty({
-        size      : 36,
-        starOff   : '<%= asset_path('star-off.png') %>',
-        starOn    : '<%= asset_path('star-on.png') %>',
-        starHalf  : '<%= asset_path('star-half.png') %>',
-        half      : true,
-        // 入力できないようにする
-        readOnly: true,
-        score: <%= @post.rate %>
-      });
-    </script>
-
-<% if @post.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :delete do %>
-        ♥<%= @post.favorites.count %> いいね
+<div class="container">
+  <div class="row mb-3">
+    <div class="col">
+      <h2>投稿詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-lg-5">
+    <%= image_tag @post.get_image("400x400!") %>
+    </div>
+    <div class="col-md-6 col-lg-5 text-break">
+      <dl>
+       <h5>
+        <dt>タイトル</dt>
+        <dd class="mt-2 ml-2"><%= @post.title %></dd>
+        <dt>紹介文</dt>
+        <dd class="mt-2 ml-2"><%= render_with_hashtags(@post.introduction) %></dd>
+        <dt>カテゴリ</dt>
+        <dd class="mt-2 ml-2"><%= @post.category.name %></dd>
+        <dt>評価</dt>
+        <dd class="mt-2 ml-2" id="star-rate<%= @post.id %>"><%= render 'public/posts/rate', post: @post %></dd>
+        <dt>いいね数 : <%= @post.favorites.count %></dt>
+        <dt class="mt-3 mb-3">投稿日</dt>
+        <dd class="text-muted mt-2 ml-2"><%= @post.created_at.strftime("%Y年%m月%d日") %></dd>
+      </h5>
+      <dt>
+      <% if @post.favorited_by?(current_customer) %>
+          <%= link_to post_favorites_path(@post), method: :delete, class: "pt-3 mr-2" do %>
+            <i class="fas fa-thumbs-up fa-2x" aria-hidden="true"></i>
+           <% end %>
+      <% else %>
+          <%= link_to post_favorites_path(@post), method: :post, class: "mr-2" do %>
+            <i class="fas fa-thumbs-up fa-2x" aria-hidden="true" style="color: gray;"></i>
+           <% end %>
       <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_favorites_path(@post), method: :post do %>
-        ♡<%= @post.favorites.count %> いいね
+      <% if @post.customer == current_customer %>
+         <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success ml-2" %>
+         <%= link_to "削除する",post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-2" %>
       <% end %>
-    </p>
-<% end %>
-
-<div>
-  <p>コメント件数：<%= @post.post_comments.count %></p>
-  <% @post.post_comments.each do |post_comment| %>
-    <p><%= image_tag post_comment.customer.get_profile_image("100x100") %></p>
-    <%= post_comment.customer.nickname %>
-
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-    <%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete %>
-  <% end %>
+         <%= link_to "戻る", posts_path, class: "btn btn-secondary ml-2" %>
+      </dt>
+    </dl>
+    </div>
+  </div>
+  <div>
+       <%= render 'public/post_comments/form', customer: @post.customer, post: @post, post_comment: @post_comment %>
+  </div>
 </div>
-
-<div>
-<%= form_with model: [@post, @post_comment], method: :post do |f| %>
-
-    <%= f.text_area :comment, rows: '5', placeholder: "商品のコメント", class: "form-control form-control-sm" %>
-
-
-    <%= f.submit "投稿する" %>
-<% end %>
-</div>
-
-
-
-
-
-<%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-success px-3" %>
-
-<%= link_to "戻る", posts_path, class: "btn btn-secondary" %>
-
-<%= link_to "削除する",post_path(@post.id), method: :delete, class: "btn btn-danger" %>
-
-
