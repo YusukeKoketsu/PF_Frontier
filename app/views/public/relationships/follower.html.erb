@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>フォロー中<%= @customers.count %>人</h2>
+      <h2><%= @customer.nickname %>さんのフォロー中<%= @customers.count %>人</h2>
     </div>
   </div>
   <div class="row">
@@ -9,7 +9,7 @@
   <%= render 'public/customers/index', customers: @customers %>
 <% else %>
   <div class="col text-center text-break">
-  <h1>フォロー中のユーザーはいません</h1>
+  <h1>フォロワーはいません</h1>
   </div>
 <% end %>
   </div>

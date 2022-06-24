@@ -38,15 +38,17 @@ scope module: :public do
     #退会画面と退会処理の設定
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    get 'mypage/:full_name' => 'customers#mypage', as: 'mypage'
-    get '/:full_name/post_comments' => 'post_comments#index', as: 'post_comments'
-    get '/:full_name/favorites' => 'favorites#show', as: 'favorites'
-    get '/:full_name/post_list' => 'posts#post_list', as: 'post_list'
+    get '/mypage/:id' => 'customers#mypage', as: 'mypage'
+
 
     resources :customers, only: [:edit, :update, :index, :show] do
       resource :relationships, only:[:create, :destroy]
-      get 'follows' => 'relationships#follower'
-      get 'followers' => 'relationships#followed'
+      get '/follows' => 'relationships#follower'
+      get '/followers' => 'relationships#followed'
+
+      get '/post_comments' => 'post_comments#index', as: 'post_comments'
+      get '/favorites' => 'favorites#show', as: 'favorites'
+      get '/post_list' => 'posts#post_list', as: 'post_list'
 
   end
 

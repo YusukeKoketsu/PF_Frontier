@@ -1,4 +1,18 @@
 <script>
+      $('#star').empty();
+      $('#star').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf  : '<%= asset_path('star-half.png') %>',
+        score: <%= post.rate %>,
+        scoreName : 'post[rate]',
+        half      : true,
+      });
+</script>
+
+
+<script>
      $('#star-rate<%= post.id %>').empty();
       $('#star-rate<%= post.id%>').raty({
         size      : 36,

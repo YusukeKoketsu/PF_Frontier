@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2>フォロワー<%= @customers.count %>人</h2>
+      <h2><%= @customer.nickname %>さんのフォロワー<%= @customers.count %>人</h2>
     </div>
   </div>
+  <div class="row">
 <% if @customers.exists? %>
   <%= render 'public/customers/index', customers: @customers %>
 <% else %>
@@ -11,5 +12,5 @@
   <h1>フォロワーはいません</h1>
   </div>
 <% end %>
-
+  </div>
 </div>

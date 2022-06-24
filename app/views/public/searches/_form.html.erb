@@ -1,21 +1,5 @@
-<!--<div class="serch_form">-->
-<!--    serch_pathルーティングに検索内容を渡している-->
-<!--    <%#= form_with url: search_path,method: :get, local: true do |f| %>-->
-<!--    ユーザーの入力した検索ワードはcontentとしてコントローラーのアクションに送られる-->
-<!--    検索ワードはcontentで、検索対象はmodelで、検索方法はmethodでコントローラーに渡される-->
-<!--    <%#= f.text_field :content %>-->
-<!--    f.selectの記述でプルダウン（セレクトボックス）を作成-->
-<!--    会員か投稿かを選択-->
-<!--    <%#= f.select :model,options_for_select({"会員検索"=>"customer","投稿"=>"post"})%>-->
-<!--    ({"完全一致"=>"perfect"...この部分の記述は、"選択肢で表示する文字"=>DBに渡す値（保存させる内容）-->
-    <%#= f.select :method,options_for_select({"完全一致"=>"perfect","部分一致"=>"partial"})%>
-<!--    <%#= f.submit'検索' %>-->
-<!--    <%# end %>-->
-<!--</div>-->
-
-
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
-  <i class="fa fa-search"></i>
+  検索
 </button>
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -29,12 +13,13 @@
       </div>
       <%= form_with url: search_path, method: :get, local: true do |f| %>
       <div class="modal-body">
-         <%= f.label :content, "キーワード検索" %>
+         <%= f.label :content, "キーワード" %>
          <%= f.text_field :content, size: "50", placeholder: "キーワードを入力してください。" %>
-         <%= f.select :model,options_for_select({"会員"=>"customer","投稿"=>"post"})%>
-         <%= f.label :method, "検索条件"%>
-         <%= f.select :method,options_for_select({"完全一致"=>"perfect","部分一致"=>"partial"})%>
-
+        <hr>
+         <%= f.radio_button :model, "customer", class: "custom-checkbox" %>
+         <%= f.label :content, "会員検索", class: "mr-5"  %>
+         <%= f.radio_button :model, "post" %>
+         <%= f.label :content, "投稿検索" %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

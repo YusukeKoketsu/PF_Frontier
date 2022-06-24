@@ -65,16 +65,5 @@ class Post < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
-  #キーワード検索機能
-  def self.search_for(content, method)
-    # 検索バーの記述　"完全一致"=>"perfect","部分一致"=>"partial"
-    if method == 'perfect'
-      # 完全一致
-      Post.where(title: content)
-    else
-      # 部分一致　'%'+content+'%'
-      Post.where('title LIKE ?', '%'+content+'%')
-    end
-  end
 
 end

@@ -1,4 +1,3 @@
-<div class="row mb-3">
  <% customers.each do |customer| %>
   <div class="col-lg-4 col-md-6 col-sm-7 form-inline justify-content-center">
     <div class="card mt-5 mb-3 shadow-lg">
@@ -9,12 +8,11 @@
           <dt class="customer-nickname">ニックネーム</dt>
           <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= customer.nickname %></dd>
           <dt class="customer-followers">フォロー数</dt>
-          <dd class="ml-2"><%= customer.follower.count %></dd>
+          <dd class="ml-2"><%= link_to  customer_follows_path(customer) do %><h4><%= customer.follower.count %></h4><% end %></dd>
           <dt class="customer-followeds">フォロワー数</dt>
-          <dd class="ml-2"><%= customer.followed.count %></dd>
+          <dd class="ml-2"><%= link_to  customer_followers_path(customer) do %><h4><%= customer.followed.count %></h4><% end %></dd>
           <dt class="follow-btn ml-1"><%= render "public/relationships/follow_btn", customer: customer %></dt>
         </dl>
    </div>
   </div>
  <% end %>
-</div>
