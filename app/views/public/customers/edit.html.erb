@@ -1,8 +1,10 @@
 <div class="container">
 
 <div class="row">
-  <div class="col-10">
-<h2>会員編集</h2>
+  <div class="col">
+<h3>会員編集</h3>
+  </div>
+</div>
 
 <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
 
@@ -50,7 +52,7 @@
     <div class="col"></div>
   </div>
   <div class="form-row mt-3">
-    <div class="col">
+    <div class="col-4">
       アイコン画像
     </div>
     <div class="col">

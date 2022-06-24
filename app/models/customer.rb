@@ -19,11 +19,6 @@ def full_name_kana
     last_name_kana + first_name_kana
 end
 
-# マイページのURLを:idからfull_nameへ変更
-def to_param
-  full_name
-end
-
 
 #フォロー機能 class_nameでRelationshipを指定
 # フォローしている
@@ -70,17 +65,12 @@ def get_profile_image(size)
 end
 
 
-#キーワード検索機能
-  def self.search_for(content, method)
-    # 検索バーの記述　"完全一致"=>"perfect","部分一致"=>"partial"
-    if method == 'perfect'
-      # 完全一致
-      Customer.where(nickname: content)
-    else
-      # 部分一致　'%'+content+'%'
-      Customer.where('nickname LIKE ?', '%'+content+'%')
-    end
-  end
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :nickname, presence: true, uniqueness: true
+
 
 
 end

@@ -5,11 +5,12 @@ class Public::SearchesController < ApplicationController
       # 検索ワードはcontentで、検索対象はmodelで、検索方法はmethod
       @model = params[:model]
       @content = params[:content]
-      @method = params[:method]
       if @model == 'customer'
-        @records = Customer.search_for(@content,@method)
+        @records = Customer.where('nickname LIKE ?', '%'+@content+'%')
+      elsif @model == 'post'
+        @records = Post.where('title LIKE ?', '%'+@content+'%')
       else
-        @records = Post.search_for(@content,@method)
+        redirect_to posts_path, notice: "キーワードと検索条件を入力してください"
       end
   end
 

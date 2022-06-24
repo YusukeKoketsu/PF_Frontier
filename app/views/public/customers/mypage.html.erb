@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col text-center">
       <h1>マイページ</h1>
-       <%= link_to "お気に入り", favorites_path(@customer) %>
+       <%= link_to "お気に入り", customer_favorites_path(@customer) %>
        /
-       <%= link_to "投稿一覧", post_list_path(@customer) %>
+       <%= link_to "投稿一覧", customer_post_list_path(@customer) %>
        /
-       <%= link_to "コメント一覧", post_comments_path(@customer) %>
+       <%= link_to "コメント一覧", customer_post_comments_path(@customer) %>
     </div>
    </div>
    <div class="row">

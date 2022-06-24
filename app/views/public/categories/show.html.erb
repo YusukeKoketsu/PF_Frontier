@@ -29,8 +29,10 @@
     <% end %>
   </div>
   <% else %>
-  <div class="col text-center text-break">
-  <h1><%= @category.name %>に関しての投稿がありません</h1>
+  <div class="row">
+    <div class="col text-center text-break mt-5">
+      <h2><%= @category.name %>に関しての投稿がありません</h2>
+    </div>
   </div>
 <% end %>
 

@@ -12,16 +12,17 @@ class Public::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  #ログイン会員フォロワー一覧
+
   def follower
-    customer = current_customer
+    customer = Customer.find(params[:customer_id])
     @customers = customer.following_customer
+    @customer = Customer.find(params[:customer_id])
   end
 
-  #ログイン会員フォロー中一覧
   def followed
-    customer = current_customer
+    customer = Customer.find(params[:customer_id])
     @customers = customer.follower_customer
+    @customer = Customer.find(params[:customer_id])
   end
 
 end

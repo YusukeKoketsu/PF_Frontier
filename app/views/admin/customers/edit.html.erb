@@ -1,25 +1,91 @@
-<h1>会員編集ページ</h1>
+<div class="container">
+
+<div class="row">
+  <div class="col">
+<h3>会員編集</h3>
+</div>
+</div>
 
 <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
 
-<%= f.text_field :last_name %>
+<div class="form-row mt-4">
+  <div class="col">
+    お名前
+    </div>
+    <div class="col">
+      <%= f.text_field :last_name, placeholder: "姓", class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :first_name, placeholder: "名", class: "form-control" %>
+    </div>
+</div>
 
-<%= f.text_field :first_name %>
+<div class="form-row mt-3">
+  <div class="col">
+    フリガナ
+    </div>
+    <div class="col">
+    <%= f.text_field :last_name_kana, placeholder: "セイ", class: "form-control" %>
+    </div>
+    <div class="col">
+    <%= f.text_field :first_name_kana, placeholder: "メイ", class: "form-control" %>
+    </div>
+ </div>
 
-<%= f.text_field :last_name_kana %>
+ <div class="form-row mt-3">
+  <div class="col">
+    ニックネーム
+    </div>
+    <div class="col">
+    <%= f.text_field :nickname, placeholder: "ニックネーム", class: "form-control" %>
+    </div>
+    <div class="col"></div>
+ </div>
 
-<%= f.text_field :first_name_kana %>
-
-<%= f.text_field :nickname %>
-
-<%= f.file_field :image, accept: "image/*" %>
-
-<%= f.radio_button :is_deleted, :false %>
-<%= f.label :is_deleted, "有効" %>
-
-<%= f.radio_button :is_deleted, :true %>
-<%= f.label :is_deleted, "退会" %>
-
-<%= f.submit "保存" %>
-
+  <div class="form-row mt-3">
+    <div class="col">
+    メールアドレス
+    </div>
+    <div class="col">
+    <%= f.email_field :email, placeholder: "sample@example.com", class: " form-control" %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="form-row mt-3">
+    <div class="col-4">
+      アイコン画像
+    </div>
+    <div class="col">
+     <%= f.file_field :profile_image, accept: "image/*" %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="form-row mt-3">
+    <div class="col">
+      ステータス
+    </div>
+    <div class="col">
+      <h5>
+      <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :is_deleted, "有効", style: "color: blue;" %>
+      </h5>
+    </div>
+    <div class="col">
+      <h5>
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :is_deleted, "退会", style: "color: red;" %>
+      </h5>
+    </div>
+  </div>
+  <div class="form-row mt-4">
+    <div class="col"></div>
+    <div class="col">
+    <%= f.submit "保存", class: "btn btn-success form-control" %>
+    </div>
+    <div class="col"></div>
+  </div>
 <% end %>
+
+</div>
+</div>
+</div>

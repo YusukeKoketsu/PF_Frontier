@@ -1,5 +1,4 @@
-<div class="row mb-3">
-    <% posts.each do |post| %>
+<% posts.each do |post| %>
       <div class="col-lg-4 col-md-6 col-sm-7 mb-2 form-inline justify-content-center">
       <div class="card mt-5 shadow-lg">
         <%= link_to post_path(post.id), class: "bd-placeholder-img card-img-top" do %>
@@ -18,5 +17,4 @@
         </dl>
       </div>
     </div>
-   <% end %>
-</div>
+<% end %>
