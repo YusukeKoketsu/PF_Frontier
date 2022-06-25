@@ -1,16 +1,40 @@
-<h1>記事編集</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>記事編集</h2>
+    </div>
+  </div>
 
-<%= form_with model: @article, url: admin_article_path, method: :patch do |f| %>
-
-<%= f.label :image, "画像" %>
-<%= f.file_field :image, accept: "image/*" %>
-
-<%= f.label :title, "タイトル" %>
-<%= f.text_field :title %>
-
-<%= f.label :introduction, "紹介文" %>
-<%= f.text_area :introduction %>
-
-<%= f.submit "保存" %>
-
-<% end %>
+  <%= form_with model: @article, url: admin_article_path, method: :patch do |f| %>
+  <div class="form-row mt-4">
+    <div class="col-3">
+      <%= f.label :image, "画像" %>
+    </div>
+    <div class="col">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="form-row mt-4">
+    <div class="col-3">
+      <%= f.label :title, "タイトル" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row mt-4">
+    <div class="col-3">
+      <%= f.label :introduction, "紹介文" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_area :introduction, class: "form-control", rows: "8" %>
+    </div>
+  </div>
+  <div class="form-row mt-4">
+    <div class="col-3"></div>
+    <div class="col-4">
+      <%= f.submit "投稿", class: "btn btn-success form-control" %>
+    </div>
+  </div>
+  <% end %>
+</div>
