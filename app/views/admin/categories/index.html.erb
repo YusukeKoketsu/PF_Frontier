@@ -1,19 +1,39 @@
-<h1>カテゴリー</h1>
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <h3>カテゴリー</h3>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+       <%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+          <%= f.text_field :name, class: "w-25" %>
+          <%= f.submit "登録", class: "btn btn-success" %>
+        <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+    <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="width: 80%">カテゴリー名</th>
+              <th style="width: 20%"></th>
+            </tr>
+          </thead>
+        <tbody>
 
-<%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+          <% @categories.each do |category| %>
 
-<%= f.text_field :name %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= link_to "編集", edit_admin_category_path(category.id), class: "btn btn-success btn-sm" %></td>
+          </tr>
 
-<%= f.submit "登録" %>
+          <% end %>
 
-<% end %>
-
-<% @categories.each do |category| %>
-
-<%= category.name %>
-
-<%= link_to "編集", edit_admin_category_path(category.id), class: "btn btn-secondary btn-sm" %>
-
-<%= link_to "削除", admin_category_path(category.id), method: :delete, class: "btn btn-secondary btn-sm" %>
-
-<% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

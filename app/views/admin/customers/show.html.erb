@@ -1,19 +1,42 @@
-<h1>会員詳細画面</h1>
-
-<%= @customer.last_name %>
-
-<%= @customer.first_name %>
-
-<%= @customer.last_name_kana %>
-
-<%= @customer.first_name_kana %>
-
-<%= @customer.nickname %>
-
-<%= image_tag @customer.get_profile_image("100x100") %>
-
-<%= @customer.is_deleted ? "退会": "有効" %>
-
-<%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-
-<%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
+<div class="container">
+  <div class="row">
+      <div class="col mb-5">
+        <h2><%= @customer.nickname %>さんの詳細ページ</h2>
+        <%= link_to "投稿一覧", admin_customer_post_list_path(@customer.id), class: "btn btn-secondary" %>
+        <%= link_to "コメント一覧", admin_customer_post_comments_path(@customer.id), class: "btn btn-secondary" %>
+    </div>
+      </div>
+  <div class="row mt-3 justify-content-center">
+      <div class="col-lg-5 col-md-4">
+        <%= image_tag @customer.get_profile_image("400x400!"), class: "rounded" %>
+      </div>
+  </div>
+  <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-8">
+          <dl>
+            <h5>
+             <dt class="mt-2">氏名</dt>
+             <dd class="mt-2 ml-2"><%= @customer.full_name %></dd>
+             <dt>フリガナ</dt>
+             <dd class="mt-2 ml-2"><%= @customer.full_name_kana %></dd>
+             <dt>ニックネーム</dt>
+             <dd class="mt-2 ml-2"><%= @customer.nickname %></dd>
+             <dt>フォロー</dt>
+             <dd class="mt-2 ml-2"><%= @customer.follower.count %></dd>
+             <dt>フォロワー</dt>
+             <dd class="mt-2 ml-2"><%= @customer.followed.count %></dd>
+             <dt>投稿数</dt>
+             <dd class="mt-2 ml-2"><%= @customer.posts.count %></dd>
+             <dt>いいね数</dt>
+             <dd class="mt-2 ml-2"><%= @customer.favorites.count %></dd>
+             <dt>ステータス</dt>
+             <dd><%= @customer.is_deleted ? "退会": "有効" %></dd>
+            </h5>
+            <dd>
+                <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
+                <%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
+            </dd>
+          </dl>
+      </div>
+  </div>
+</div>

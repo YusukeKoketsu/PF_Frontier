@@ -7,8 +7,14 @@ Rails.application.routes.draw do
 namespace :admin do
     get 'top' => 'homes#top'
     resources :articles
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      get '/post_list' => 'posts#post_list'
+      get '/post_comments' => 'post_comments#index', as: 'post_comments'
+    end
     resources :categories, except: [:show, :new]
+    resources :posts, only: [:show, :destroy, :edit, :update] do
+    resources :post_comments, only: [:destroy]
+  end
 
   end
 

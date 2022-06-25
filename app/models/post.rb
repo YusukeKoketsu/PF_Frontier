@@ -19,6 +19,14 @@ class Post < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(rate: :desc)}
 
+  validates :title, presence: true, length: { maximum: 50 }
+  validates :introduction, presence: true, length: { maximum: 300 }
+
+  # レビューの星マークの設定 数値のみを許可する為numericalityを使用 1～5までとする
+  validates :rate, numericality: {
+    less_than_or_equal_to: 5,
+    greater_than_or_equal_to: 0.5}, presence: true
+
   # ハッシュタグ機能
   after_create do
     post = Post.find_by(id: id)
@@ -41,13 +49,6 @@ class Post < ApplicationRecord
       post.hashtags << tag
     end
   end
-
-
-  # レビューの星マークの設定 数値のみを許可する為numericalityを使用 1～5までとする
-  validates :rate, numericality: {
-    less_than_or_equal_to: 5,
-    greater_than_or_equal_to: 0.5}, presence: true
-
 
   has_one_attached :image
 
