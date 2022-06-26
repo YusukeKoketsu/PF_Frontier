@@ -8,8 +8,9 @@ class Admin::PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to request.referer
+    @post = Post.find(params[:post_id])
+     post_comment = @post.post_comments.find(params[:id])
+     post_comment.destroy
   end
 
   private
