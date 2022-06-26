@@ -1,3 +1,4 @@
+<% if posts.exists? %>
 <% posts.each do |post| %>
       <div class="col-lg-4 col-md-6 col-sm-7 mb-2 form-inline justify-content-center">
       <div class="card mt-5 shadow-lg">
@@ -17,4 +18,9 @@
         </dl>
       </div>
     </div>
+<% end %>
+<% else %>
+  <div class="col text-center text-break mt-5">
+      <h1>検索した投稿はありません。</h1>
+  </div>
 <% end %>

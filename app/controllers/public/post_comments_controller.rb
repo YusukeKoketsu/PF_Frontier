@@ -1,7 +1,11 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_sign_in, only: [:index, :create, :destroy]
 
+
+  # ログイン会員のコメント一覧
   def index
-    @post_comments = current_customer.post_comments
+    @post_comments = current_customer.post_comments.page(params[:page])
   end
 
   def create

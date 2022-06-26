@@ -8,9 +8,10 @@
 <% if @customers.exists? %>
   <%= render 'public/customers/index', customers: @customers %>
 <% else %>
-  <div class="col text-center text-break">
+  <div class="col text-center text-break mt-5">
   <h1>フォロワーはいません</h1>
   </div>
 <% end %>
   </div>
+  <%= paginate @customers %>
 </div>

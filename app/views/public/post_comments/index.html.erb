@@ -5,6 +5,7 @@
     </div>
   </div>
    <div class="row">
+    <% if @post_comments.exists? %>
       <% @post_comments.each do |post_comment| %>
       <div class="col">
         <div class="card m-3" style="width: 30rem;">
@@ -22,6 +23,12 @@
         </div>
       </div>
        <% end %>
+       <% else %>
+          <div class="col text-center text-break mt-5">
+            <h1>コメントはありません</h1>
+          </div>
+      <% end %>
     </div>
+    <%= paginate @post_comments %>
 </div>
 

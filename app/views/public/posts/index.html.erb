@@ -36,11 +36,12 @@
           <dt class="post-category">カテゴリー</dt>
           <dd class="ml-2"><%= post.category.name %></dd>
           <dt class="post-rate">評価</dt>
-          <dd class="ml-2" id="star-rate<%= post.id%>"><%= render 'public/posts/rate', post: post %></dd>
+          <dd class="ml-2" id="star-rate<%= post.id %>"><%= render 'public/posts/rate', post: post %></dd>
           <dd>コメント数 : <%= post.post_comments.count %><span class="ml-3">いいね数 : <%= post.favorites.count %></span></dd>
         </dl>
       </div>
     </div>
    <% end %>
  </div>
+ <%= paginate @posts %>
 </div>

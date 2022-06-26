@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :category_id, null: false
       t.string :title, null: false
       t.text :introduction, null: false
-      t.float :rate, unll: false, default: 0
+      t.float :rate, unll: false, default: 0.5
 
       t.timestamps
     end
