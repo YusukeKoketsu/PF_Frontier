@@ -1,12 +1,14 @@
 <div class="row">
-<div class="col-12">
-<% if customer == post.customer %>
-  <%= form_with model: [post, post_comment], local: false do  |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
-    <%= f.submit "送信する", class: "btn btn-primary btn-lg" %>
-  <% end %>
+  <div class="col-12">
+    <% if current_customer != post.customer %>
+      <%= form_with model: [post, post_comment], local: false do  |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
+      <%= f.submit "送信する", class: "btn btn-primary btn-lg" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-</div>
+<% if post.post_comments.exists? %>
 <div class="row">
   <div class="col">
     <hr>
@@ -20,14 +22,19 @@
         <div class="card-body">
            <dl>
              <dt class="customer-nickname">ニックネーム</dt>
-             <dd class="m-2"><%= post_comment.customer.nickname %></dd>
+             <dd class="m-2"><h5><%= post_comment.customer.nickname %><h5></dd>
              <dt class="post_comment"><h5>コメント</h5></dt>
              <dd class="m-2"><%= post_comment.comment %></dd>
              <dd class="card-subtitle mb-2 text-muted mt-4"><%= post_comment.created_at.strftime('%Y/%m/%d') %></dd>
+             <% if post_comment.customer == current_customer %>
              <dd class="text-right"><%= link_to "削除", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-danger" %></dd>
+             <% else %>
+             <% end %>
            </dl>
           </div>
         </div>
-    <% end %>
-<% end %>
+      <% end %>
+
 </div>
+<% else %>
+<% end %>

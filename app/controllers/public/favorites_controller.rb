@@ -1,7 +1,10 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_sign_in, only: [:show, :create, :destroy]
 
+ # ログイン会員のいいねページ
   def show
-    @favorites = current_customer.favorites
+    @favorites = current_customer.favorites.page(params[:page])
   end
 
   def create

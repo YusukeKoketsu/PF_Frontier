@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  before_action :authenticate_admin!
 
   def show
     @post = Post.find(params[:id])
@@ -6,7 +7,7 @@ class Admin::PostsController < ApplicationController
 
   def post_list
     @customer = Customer.find(params[:customer_id])
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page])
   end
 
   def edit
@@ -16,6 +17,7 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:notice] = '投稿の情報を更新しました。'
       redirect_to admin_post_path
     else
       render 'edit'
@@ -26,6 +28,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:alert] = '投稿を削除しました。'
     redirect_to admin_customer_post_list_path(@post.customer.id)
   end
 

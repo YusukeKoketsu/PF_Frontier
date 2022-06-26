@@ -34,3 +34,22 @@ footer{
     left: 0;
     width: 100%;
 }
+
+
+// ページネーションの設定
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+}
+
+.pagination>li>a:hover {
+  background: #CCCCCC;
+}
+
