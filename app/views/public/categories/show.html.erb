@@ -13,7 +13,6 @@
           <%= image_tag post.get_image("350x350!")%>
           <% end %>
           <dl>
-            <dt>
               <dt class="post-title">タイトル</dt>
               <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= post.title %></dd>
               <dt class="post-text">紹介文</dt>
@@ -22,8 +21,8 @@
               <dd class="ml-2"><%= post.category.name %></dd>
               <dt class="post-rate">評価</dt>
               <dd class="ml-2" id="star-rate<%= post.id %>"><%= render 'public/posts/rate', post: post %></dd>
-            </dt>
-          </dl>
+              <dd>コメント数 : <%= post.post_comments.count %><span class="ml-3">いいね数 : <%= post.favorites.count %></span></dd>
+            </dl>
          </div>
       </div>
     <% end %>

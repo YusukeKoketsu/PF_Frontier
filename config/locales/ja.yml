@@ -7,3 +7,26 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: 'タイトル'
+        introduction: '紹介文'
+        category: 'カテゴリー'
+  customer:
+        email: 'メールアドレス'
+        last_name: '名前(姓)'
+        first_name: '名前(名)'
+        last_name_kana: '名前(セイ)'
+        first_name_kana: '名前(メイ)'
+        nickname: 'ニックネーム'
+ja:
+  activerecord:
+    attributes:
+      category:
+        name: 'カテゴリー名'
+      article:
+        title: 'タイトル'
+        introduction: '紹介文'

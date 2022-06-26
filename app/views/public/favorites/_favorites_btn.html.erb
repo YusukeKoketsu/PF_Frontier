@@ -1,0 +1,11 @@
+<% if post.customer != current_customer %>
+  <% if post.favorited_by?(current_customer) %>
+     <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "pt-3 mr-2" do %>
+       <i class="fas fa-thumbs-up fa-2x" aria-hidden="true"></i>
+     <% end %>
+  <% else %>
+     <%= link_to post_favorites_path(post), method: :post, remote: true, class: "mr-2" do %>
+         <i class="fas fa-thumbs-up fa-2x" aria-hidden="true" style="color: gray;"></i>
+     <% end %>
+  <% end %>
+<% end %>
