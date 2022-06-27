@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   scope :star_count, -> {order(rate: :desc)}
 
   validates :title, presence: true, length: { maximum: 50 }
-  validates :introduction, presence: true, length: { maximum: 300 }
+  validates :introduction, presence: true, length: { maximum: 500 }
 
   # レビューの星マークの設定 数値のみを許可する為numericalityを使用 1～5までとする
   validates :rate, numericality: {

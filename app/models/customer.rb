@@ -69,7 +69,7 @@ end
   validates :last_name_kana, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :nickname, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true, length: { maximum: 20 }
 
 
 
