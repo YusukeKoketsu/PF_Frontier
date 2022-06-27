@@ -21,7 +21,8 @@
               <dd class="ml-2"><%= post.category.name %></dd>
               <dt class="post-rate">評価</dt>
               <dd class="ml-2" id="star-rate<%= post.id %>"><%= render 'public/posts/rate', post: post %></dd>
-              <dd>コメント数 : <%= post.post_comments.count %><span class="ml-3">いいね数 : <%= post.favorites.count %></span></dd>
+              <dt>コメント数 : <%= post.post_comments.count %><span class="ml-3">いいね数 : <%= post.favorites.count %></span></dt>
+              <dt class="mt-2"><span>投稿日 : </span><span class="text-muted mt-2 ml-2"><%= post.created_at.strftime("%Y年%m月%d日") %></span></dt>
             </dl>
          </div>
       </div>
