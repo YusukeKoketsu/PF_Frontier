@@ -1,0 +1,22 @@
+<% if articles.exists? %>
+<% articles.each do |article| %>
+      <div class="col-lg-4 col-md-6 col-sm-7 mb-2 form-inline justify-content-center">
+      <div class="card mt-5 shadow-lg">
+        <%= link_to article_path(article.id), class: "bd-placeholder-img card-img-top" do %>
+        <%= image_tag article.get_image("350x350!") %>
+        <% end %>
+        <dl>
+          <dt class="post-title">タイトル</dt>
+          <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= article.title %></dd>
+          <dt class="post-text">紹介文</dt>
+          <dd class="d-inline-block text-truncate ml-2" style="max-width: 200px;"><%= article.introduction %></dd>
+          <dt class="mt-2"><span>投稿日 : </span><span class="text-muted mt-2 ml-2"><%= article.created_at.strftime("%Y年%m月%d日") %></span></dt>
+        </dl>
+      </div>
+    </div>
+<% end %>
+<% else %>
+  <div class="col text-center text-break mt-5">
+      <h1>検索した記事はありません。</h1>
+  </div>
+<% end %>

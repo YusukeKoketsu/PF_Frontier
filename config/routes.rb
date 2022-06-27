@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 namespace :admin do
     get 'top' => 'homes#top'
+    get 'search' => 'searches#search'
     resources :articles
     resources :customers, only: [:show, :edit, :update] do
       get '/post_list' => 'posts#post_list'
