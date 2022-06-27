@@ -27,40 +27,48 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li class="nav-item">
-           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-           <%= link_to '新規投稿', new_post_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2 form-inline">
+          <i class="fa fa-user"></i>
            <%= link_to 'マイページ', mypage_path(current_customer), class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-plus"></i>
+           <%= link_to '新規投稿', new_post_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-list"></i>
            <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-users"></i>
            <%= link_to '会員一覧', customers_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
-           <%= render 'public/searches/form' %>
+          <%= render 'public/searches/form' %>
+           <li class="nav-item form-inline">
+           <i class="fas fa-sign-out-alt"></i>
+           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
          </ul>
         <% elsif  admin_signed_in? %>
-          <li class="nav-item">
-           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-users"></i>
            <%= link_to '会員一覧', admin_top_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
-           <%= link_to '新規投稿', new_admin_article_path, class: 'nav-link text-dark' %>
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-plus"></i>
+           <%= link_to '新規記事', new_admin_article_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-2 form-inline">
+           <i class="fa fa-car"></i>
            <%= link_to 'カテゴリ一ー覧', admin_categories_path, class: 'nav-link text-dark' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-4 form-inline">
+           <i class="fa fa-list"></i>
            <%= link_to '記事ー覧', admin_articles_path, class: 'nav-link text-dark' %>
+          </li>
+          <li class="nav-item form-inline">
+           <i class="fas fa-sign-out-alt"></i>
+           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
          </ul>
         <% end %>
@@ -69,10 +77,10 @@
      </div>
    </header>
    <main>
-     <div class="text-success">
+     <div class="text-success ml-5">
       <h4><%= flash[:notice] %></h4>
     </div>
-    <div class="text-danger">
+    <div class="text-danger ml-5">
       <h4><%= flash[:alert] %></h4>
     </div>
     <%= yield %>
