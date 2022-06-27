@@ -66,6 +66,7 @@
            <i class="fa fa-list"></i>
            <%= link_to '記事ー覧', admin_articles_path, class: 'nav-link text-dark' %>
           </li>
+          <%= render 'admin/searches/form' %>
           <li class="nav-item form-inline">
            <i class="fas fa-sign-out-alt"></i>
            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>

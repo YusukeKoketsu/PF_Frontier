@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="row mb-3">
-      <%= render 'public/customers/index', customers: @records %>
+      <%= render 'admin/customers/index', customers: @records %>
     </div>
   <% elsif @model == 'post' %>
     <div class="row">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="row mb-3">
-       <%= render 'public/posts/index', posts: @records %>
+       <%= render 'admin/posts/index', posts: @records %>
     </div>
   <% else @model == 'article' %>
     <div class="row">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="row mb-3">
-       <%= render 'public/articles/index',   articles: @records %>
+       <%= render 'admin/articles/index',   articles: @records %>
     </div>
   <% end %>
 </div>

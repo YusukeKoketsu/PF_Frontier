@@ -1,0 +1,2 @@
+module Admin::SesrchesHelper
+end

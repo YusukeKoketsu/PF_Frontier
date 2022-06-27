@@ -1,5 +1,4 @@
-class Public::SearchesController < ApplicationController
-  before_action :authenticate_customer!
+class Admin::SearchesController < ApplicationController
 
   def search
       # 検索ワードはcontentで、検索対象はmodel
@@ -13,7 +12,7 @@ class Public::SearchesController < ApplicationController
         @records = Article.where('title LIKE ?', '%'+@content+'%')
       else
         flash[:alert] = 'キーワードと検索条件を入力してください。'
-        redirect_to posts_path
+        redirect_to admin_articles_path
       end
   end
 
