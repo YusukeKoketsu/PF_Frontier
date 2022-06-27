@@ -16,8 +16,10 @@
      <nav class="navbar navbar-expand-lg navbar-light mb-4">
         <% if admin_signed_in? %>
           <a class="navbar-brand p-3" href="/admin/top"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
-        <% else %>
+        <% elsif customer_signed_in? %>
           <a class="navbar-brand p-3" href="/"><h1>𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1></a>
+        <% else %>
+          <h1 class="p-2">𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h1>
         <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,17 +63,6 @@
            <%= link_to '記事ー覧', admin_articles_path, class: 'nav-link text-dark' %>
           </li>
          </ul>
-        <% else %>
-          <li class="nav-item">
-           <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-           <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
-          </li>
-          <li class="nav-item">
-           <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
-          </li>
-         </ul>
         <% end %>
       </div>
      </nav>
@@ -90,7 +81,7 @@
     <div class="container mx-auto">
     <div class="row p-3 ">
       <div class="mx-auto">
-       <p class = "m-0">𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</p>
+       <h5 class = "m-0">𝕱𝖗𝖔𝖓𝖙𝖎𝖊𝖗</h5>
       </div>
     </div>
    </div>
