@@ -4,6 +4,7 @@
         <h2><%= @customer.nickname %>さんの詳細ページ</h2>
         <%= link_to "投稿一覧", admin_customer_post_list_path(@customer.id), class: "btn btn-secondary" %>
         <%= link_to "コメント一覧", admin_customer_post_comments_path(@customer.id), class: "btn btn-secondary" %>
+        <%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
     </div>
       </div>
   <div class="row mt-3 justify-content-center">
@@ -21,22 +22,14 @@
              <dd class="mt-2 ml-2"><%= @customer.full_name_kana %></dd>
              <dt>ニックネーム</dt>
              <dd class="mt-2 ml-2"><%= @customer.nickname %></dd>
-             <dt>フォロー</dt>
-             <dd class="mt-2 ml-2"><%= @customer.follower.count %></dd>
-             <dt>フォロワー</dt>
-             <dd class="mt-2 ml-2"><%= @customer.followed.count %></dd>
-             <dt>投稿数</dt>
-             <dd class="mt-2 ml-2"><%= @customer.posts.count %></dd>
-             <dt>いいね数</dt>
-             <dd class="mt-2 ml-2"><%= @customer.favorites.count %></dd>
-             <dt>ステータス</dt>
-             <dd><%= @customer.is_deleted ? "退会": "有効" %></dd>
+             <dt><span class="mt-2 mr-4">フォロー : <%= @customer.follower.count %></span><spna>フォロワー : <%= @customer.followed.count %></spna></dt>
+             <dt class="mt-2">投稿数 : <%= @customer.posts.count %></dt>
+             <dt class="mt-2">ステータス : <%= @customer.is_deleted ? "退会": "有効" %></dt>
             </h5>
-            <dd>
-                <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
-                <%= link_to "戻る", admin_top_path, class: "btn btn-secondary" %>
-            </dd>
           </dl>
       </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-5 m-3"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success form-control" %></div>
   </div>
 </div>
