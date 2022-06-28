@@ -10,15 +10,24 @@ class Public::PostCommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    post_comment = current_customer.post_comments.new(post_comment_params)
-    post_comment.post_id = @post.id
-    post_comment.save
+    @post_comment = current_customer.post_comments.new(post_comment_params)
+    @post_comment.post_id = @post.id
+    unless @post_comment.save
+      render 'error'
+    end
   end
 
   def destroy
     @post = Post.find(params[:post_id])
      post_comment = @post.post_comments.find(params[:id])
      post_comment.destroy
+  end
+
+  def erase
+    @post_comments = current_customer.post_comments
+    @customer = Customer.find(params[:customer_id])
+    post_comment = @customer.post_comments.find(params[:id])
+    post_comment.destroy
   end
 
 

@@ -13,6 +13,13 @@ class Admin::PostCommentsController < ApplicationController
      post_comment.destroy
   end
 
+  def erase
+    @customer = Customer.find(params[:customer_id])
+    @post_comments = @customer.post_comments
+    post_comment = @customer.post_comments.find(params[:id])
+    post_comment.destroy
+  end
+
   private
 
   def post_comment_params
