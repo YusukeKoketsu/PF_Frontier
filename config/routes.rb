@@ -11,6 +11,7 @@ namespace :admin do
     resources :customers, only: [:show, :edit, :update] do
       get '/post_list' => 'posts#post_list'
       get '/post_comments' => 'post_comments#index', as: 'post_comments'
+      delete '/post_comment/:id' => 'post_comments#erase', as: 'post_comment'
     end
     resources :categories, except: [:show, :new]
     resources :posts, only: [:show, :destroy, :edit, :update] do
@@ -54,6 +55,7 @@ scope module: :public do
       get '/followers' => 'relationships#followed'
 
       get '/post_comments' => 'post_comments#index', as: 'post_comments'
+      delete '/post_comment/:id' => 'post_comments#erase', as: 'post_comment'
       get '/favorites' => 'favorites#show', as: 'favorites'
       get '/post_list' => 'posts#post_list', as: 'post_list'
 

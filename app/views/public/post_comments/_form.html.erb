@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-12">
     <% if current_customer != post.customer %>
+    <div class="error"><%= render 'layouts/errors', obj: post_comment %></div>
       <%= form_with model: [post, post_comment], local: false do  |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
       <%= f.submit "送信する", class: "btn btn-primary btn-lg" %>

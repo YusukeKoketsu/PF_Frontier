@@ -9,7 +9,7 @@ ja:
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        email: Eメール
+        email: メールアドレス
         last_name: お名前(姓)
         first_name: お名前(名)
         last_name_kana: お名前(セイ)
