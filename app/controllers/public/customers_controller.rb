@@ -28,7 +28,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
-    @member = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   # 退会画面表示
