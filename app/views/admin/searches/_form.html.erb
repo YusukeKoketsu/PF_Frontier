@@ -1,4 +1,4 @@
-<li class="nav-item mr-4 form-inline" type="button" data-toggle="modal" data-target="#exampleModalLong">
+<li class="nav-item mr-4 mt-2 mb-2 form-inline" type="button" data-toggle="modal" data-target="#exampleModalLong">
   <i class="fa fa-search"></i>
   検索
 </li>
@@ -15,12 +15,12 @@
       <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
       <div class="modal-body">
          <%= f.label :content, "キーワード" %>
-         <%= f.text_field :content, size: "50", placeholder: "キーワードを入力してください。" %>
+         <%= f.text_field :content, class: "form-control", placeholder: "キーワードを入力してください。" %>
         <hr>
-         <%= f.radio_button :model, "customer", class: "custom-checkbox" %>
-         <%= f.label :content, "会員検索", class: "mr-5"  %>
+         <%= f.radio_button :model, "customer" %>
+         <%= f.label :content, "会員検索", class: "mr-3"  %>
          <%= f.radio_button :model, "post" %>
-         <%= f.label :content, "投稿検索", class: "mr-5" %>
+         <%= f.label :content, "投稿検索", class: "mr-3" %>
          <%= f.radio_button :model, "article" %>
          <%= f.label :content, "記事検索" %>
       </div>
