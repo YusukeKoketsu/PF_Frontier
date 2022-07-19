@@ -1,5 +1,7 @@
 <% if customers.exists? %>
  <% customers.each do |customer| %>
+ <!--ゲストとログイン会員を非表示にする-->
+ <% if customer != Customer.guest && customer != current_customer %>
   <div class="col-lg-4 col-md-6 col-sm-7 form-inline justify-content-center">
     <div class="card mt-5 mb-3 shadow-lg">
       <%= link_to customer_path(customer.id), class: "bd-placeholder-img card-img-top" do %>
@@ -16,6 +18,7 @@
         </dl>
    </div>
   </div>
+ <% end %>
  <% end %>
 <% else %>
   <div class="col text-center text-break mt-5">
