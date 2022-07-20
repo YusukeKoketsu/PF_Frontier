@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
       <div class="col mb-5">
-        <h2><%= @member.nickname %>さんの詳細ページ</h2>
+        <h2><%= @customer.nickname %>さんの詳細ページ</h2>
       </div>
   </div>
   <div class="row">
       <div class="col-lg-5 col-md-4">
-        <%= image_tag @member.get_profile_image("400x400!"), class: "rounded" %>
+        <%= image_tag @customer.get_profile_image("400x400!"), class: "rounded" %>
       </div>
       <div class="col-lg-7 col-md-8">
           <dl>
             <h5>
              <dt class="mt-2">ニックネーム</dt>
-             <dd class="mt-2 ml-2"><%= @member.nickname %></dd>
+             <dd class="mt-2 ml-2"><%= @customer.nickname %></dd>
              <dt>フォロー</dt>
-             <dd class="mt-2 ml-2"><%= @member.follower.count %></dd>
+             <dd class="mt-2 ml-2"><%= @customer.follower.count %></dd>
              <dt>フォロワー</dt>
-             <dd class="mt-2 ml-2"><%= @member.followed.count %></dd>
+             <dd class="mt-2 ml-2"><%= @customer.followed.count %></dd>
              <dt>投稿数</dt>
-             <dd class="mt-2 ml-2"><%= @member.posts.count %></dd>
+             <dd class="mt-2 ml-2"><%= @customer.posts.count %></dd>
              <dt>いいね数</dt>
-             <dd class="mt-2 ml-2"><%= @member.favorites.count %></dd>
-             <dt class="follow-btn ml-1"><%= render "public/relationships/follow_btn", customer: @member %></dt>
+             <dd class="mt-2 ml-2"><%= @customer.favorites.count %></dd>
+             <dt class="follow-btn ml-1"><%= render "public/relationships/follow_btn", customer: @customer %></dt>
             </h5>
           </dl>
       </div>
