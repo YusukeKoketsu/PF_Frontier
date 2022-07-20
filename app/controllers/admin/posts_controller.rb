@@ -25,6 +25,12 @@ class Admin::PostsController < ApplicationController
   end
 
 
+  def hashtag
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @posts = @tag.posts.page(params[:page])
+  end
+
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
