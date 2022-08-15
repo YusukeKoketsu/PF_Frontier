@@ -15,7 +15,7 @@ import '@fortawesome/fontawesome-free/js/all'
 // viewで操作する為、window.を使用
 window.$ = window.jQuery = require('jquery');
 import "packs/raty";
-
+import "packs/pagtop.js";
 
 Rails.start()
 Turbolinks.start()

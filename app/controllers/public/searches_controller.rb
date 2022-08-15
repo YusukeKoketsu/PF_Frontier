@@ -9,8 +9,6 @@ class Public::SearchesController < ApplicationController
         @records = Customer.where('nickname LIKE ?', '%'+@content+'%')
       elsif @model == 'post'
         @records = Post.where('title LIKE ?', '%'+@content+'%')
-      elsif @model == 'article'
-        @records = Article.where('title LIKE ?', '%'+@content+'%')
       else
         flash[:alert] = 'キーワードと検索条件を入力してください。'
         redirect_to posts_path
